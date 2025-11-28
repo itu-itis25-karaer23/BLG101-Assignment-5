@@ -5,7 +5,27 @@
     <title>My Web Page</title>
     <link rel="stylesheet" href="13_11_2025.css">
 </head>
-<body>
+<body
+    onload="document.body.style.backgroundColor='pink'; welcomeFunction()"
+    onresize="document.body.style.backgroundColor='lightblue'"
+    onkeydown="document.body.style.backgroundColor='white'"
+    onkeyup="document.body.style.backgroundColor='lightyellow'">
+    <script>
+        function welcomeFunction() {
+            alert("Welcome!");
+        }
+
+        function keydownFunction() {
+            document.getElementById("nameInput").style.backgroundColor = "yellow";
+        }
+
+        function changeBackground() {
+            document.getElementById("nameInput").style.backgroundColor = "lightblue";
+        }
+    </script>
+
+    Enter your name: <input type="text" id="nameInput" onkeydown="keydownFunction()" onkeyup="changeBackground()">
+
     <p class="centered"><em>Barış Karaer<br>150230742</em></p>
     
     <div class="center-icon">
@@ -35,7 +55,7 @@
         </li>
     </ul>
 
-    <h1><strong>Bees</strong></h1>
+    <h1 onmouseover="style.color='orange'; style.backgroundColor='lightgreen'" onmouseout="style.color='red'; style.backgroundColor=''"><strong>Bees</strong></h1>
     <p>
         <img src="bees.jpg" alt="Bees">
     </p>
@@ -68,7 +88,7 @@
             <td>Bombus</td>
         </tr>
     </table>
-    <pre>                          
+    <pre>
                             Are you a beekeeper?
 
             This web page is right for you! I hope you enjoy it.</pre>
