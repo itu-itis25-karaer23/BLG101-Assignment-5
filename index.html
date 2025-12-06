@@ -22,8 +22,16 @@
         function changeBackground() {
             document.getElementById("nameInput").style.backgroundColor = "lightblue";
         }
+
+        let colorIndex = 0;
+        function changeColors() {
+            const colors = ['red', 'blue', 'green', 'gray'];
+            document.getElementById("colorButton").style.backgroundColor = colors[colorIndex];
+            colorIndex = (colorIndex + 1) % colors.length;
+        }
     </script>
 
+    <button id="colorButton" onclick="changeColors()">Change Colors!</button>
     Enter your name: <input type="text" id="nameInput" onkeydown="keydownFunction()" onkeyup="changeBackground()">
 
     <p class="centered"><em>Barış Karaer<br>150230742</em></p>
