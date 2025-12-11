@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Text Game</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Reverse Text Game</h1>
+        <p id="level-text">Level: <span id="level">1</span></p>
+        <p id="challenge-text">Write this text in reverse:</p>
+        <input type="text" id="challenge" readonly>
+        <input type="text" id="user-input" placeholder="Type the reversed text here">
+        <p>Time left: <span id="timer">45</span> seconds</p>
+        <button id="submit-btn">Submit</button>
+        <p id="message"></p>
+        <button id="restart-btn" class="hidden">Restart</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
