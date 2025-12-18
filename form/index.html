@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> FORM </title>
+</head>
+<body>
+
+<form id="formID" onsubmit="formSubmitted(event)">
+    <fieldset>
+        <legend> FORM </legend>
+        
+        <div>
+            <label for="name"> Name & Surname </label>
+            <input id="name" placeholder="Username">
+        </div>
+
+        <div>
+            <label for="id"> Student ID </label>
+            <input id="id" placeholder="Student ID">
+        </div>
+
+        <div>
+            <label for="age"> Age </label>
+            <input id="age" type="number" name="age" value="0">
+        </div>
+
+        <div>
+            <label for="email"> Email </label>
+            <input id="email" type="email">
+        </div>
+
+        <div>
+            <label for="birthdate"> Birthdate </label>
+            <input id="birthdate" type="date">
+        </div>
+
+        <div>
+            <label for="password"> Password </label>
+            <input id="password" type="password" placeholder="Password">
+        </div>
+
+        <div>
+            <label for="wellcheck"> I read the assignment description well. </label>
+            <input id="wellcheck" type="checkbox">
+        </div>
+
+        <div>
+            <label for="askcheck"> I asked my friends to what to do. </label>
+            <input id="askcheck" type="checkbox">
+        </div>
+
+        <div>
+            <label for="option1"> I read the assignment description. </label>
+            <input type="radio" name="option" value="option1" id="option1">
+        </div>
+
+        <div>
+            <label for="option2"> I asked my friends to what to do. </label>
+            <input type="radio" name="option" value="option2" id="option2">
+        </div>
+
+        <div>
+            <label for="others"> Others </label>
+            <textarea id="others"></textarea>
+        </div>
+
+        <button type="reset"> Reset </button>
+        <button type="submit"> Submit </button>
+    </fieldset>
+</form>
+
+<script>
+    const checkStudentID = () => {
+        console.log("Student ID is being checked.");
+        const sid = document.getElementById("id").value;
+        if (sid.length !== 9) return 1;
+        if (isNaN(sid)) return 2;
+        return 0;
+    };
+
+    const checkName = () => {
+        console.log("Name is being checked.");
+        return document.getElementById("name").value === "" ? 1 : 0;
+    };
+
+    const checkAge = () => {
+        console.log("Age is being checked.");
+        const age = parseInt(document.getElementById("age").value);
+        const birthdateValue = document.getElementById("birthdate").value;
+        if (!birthdateValue) return 1;
+
+        const birthdate = new Date(birthdateValue);
+        const calculatedAge = new Date().getFullYear() - birthdate.getFullYear();
+        return age !== calculatedAge ? 1 : 0;
+    };
+
+    const formSubmitted = event => {
+        event.preventDefault();
+        
+        if (checkName() === 1) {
+            alert("Name must be filled!");
+            return;
+        }
+
+        const sidControl = checkStudentID();
+        if (sidControl === 1) {
+            alert("Student ID must be 9 digits!");
+            return;
+        } 
+        if (sidControl === 2) {
+            alert("Student ID must be only numbers!");
+            return;
+        }
+
+        if (checkAge() === 1) {
+            alert("Age and birthdate do not match!");
+            return;
+        }
+
+        const today = new Date();
+        alert(`Form submitted successfully! Date: ${today.getDate()} ${today.getMonth() + 1} ${today.getFullYear()}`);
+    };
+</script>
+
+</body>
+</html>
+
